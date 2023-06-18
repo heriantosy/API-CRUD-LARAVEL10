@@ -1,0 +1,11 @@
+Gunakan Extentsi Tambahan yaitu php intelephense untuk auto type
+
+php artisan make:seeder BukuSeeder
+php artisan db:seed --class=BukuSeeder
+
+method yang digunakan api
+----------------------------------------------------
+php artisan make:controller Api\BukuController --api 
+
+http://localhost:8000/api/buku (cTRL+S pada PostMan)
+http://localhost:8000/api/buku/2
