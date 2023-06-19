@@ -23,8 +23,6 @@
                     </ul>
                 </div>
             @endif
-
-
             @if (session()->has('success'))
                 <div class="alert alert-succes">
                     {{ session('success') }}
@@ -32,22 +30,27 @@
             @endif
             <form action='' method='post'>
                 @csrf
+                <!-- put ini hanya dijalankan pada edit -->
+                @if(Route::current()->uri =='buku/{id}')                
+                @method('put') 
+                @endif
+
             <div class="mb-3 row">
                     <label for="judul" class="col-sm-2 col-form-label">Judul Buku</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='judul' id="judul" value="{{ old('judul') }}">
+                        <input type="text" class="form-control" name='judul' id="judul" value="{{ isset($data['judul'])?$data['judul']:old('judul') }}">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Pengarang</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='pengarang' id="pengarang" value="{{ old('pengarang') }}">
+                        <input type="text" class="form-control" name='pengarang' id="pengarang" value="{{ isset($data['pengarang'])?$data['pengarang']:old('pengarang') }}">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="tanggal_publikasi" class="col-sm-2 col-form-label">Penerbit</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control w-50" name='penerbit' id="penerbit" value="{{ old('penerbit') }}">
+                        <input type="text" class="form-control w-50" name='penerbit' id="penerbit" value="{{ isset($data['penerbit'])?$data['penerbit']:old('penerbit') }}">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -58,7 +61,8 @@
             </form>
         </div>
         <!-- AKHIR FORM -->
-
+        <!-- gunakan ini agar data tidak ditampilkan tapi form saja -->
+        @if(Route::current()->uri=='buku')
         <!-- START DATA -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <table class="table table-striped">
@@ -80,8 +84,11 @@
                         <td>{{ $item['pengarang'] }}</td>
                         <td>{{ $item['penerbit'] }}</td>
                         <td>
-                            <a href="" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="" class="btn btn-danger btn-sm">Del</a>
+                        <a href="{{ url('buku/'. $item['id']) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ url('buku/'. $item['id']) }}" method="post" onsubmit="return confirm('Hapus')" class="d-inline">
+                            @csrf
+                            <button type="submit" name="submit" class="btn btn-danger btn-sm">Del </button>    
+                            </form>
                         </td>
                     </tr>
                     <?php $i++  ?>
@@ -91,6 +98,7 @@
 
         </div>
         <!-- AKHIR DATA -->
+        @endif
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
