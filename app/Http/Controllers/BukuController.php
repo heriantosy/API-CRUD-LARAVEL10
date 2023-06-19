@@ -61,9 +61,11 @@ class BukuController extends Controller
         if ($contentArray['status'] !=true){
             //echo"Gagal";
             $error = $contentArray['data'];
-            print $error;
+            return redirect()->to('buku')->withErrors($error)->withInput();
+            //print $error;
         }else{
-            echo"Sukses";
+            // echo"Sukses";
+            return redirect()->to('buku')->with('success', 'Berhasil')->withInput();
         }
         //return view('buku.index', ['data' => $data]);
 
