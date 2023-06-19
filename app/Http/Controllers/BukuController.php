@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
+//Halaman Front End
 class BukuController extends Controller
 {
     /**
@@ -15,7 +16,17 @@ class BukuController extends Controller
        $client = new Client();
        $url ="http://localhost:8000/api/buku";
        $response = $client->request('GET', $url);
-       dd($response);
+       //Cek Berhasilkah?
+       //dd($response);       
+       //echo $response->getStatusCode();
+       //echo $response->getBody()->getContents();
+
+       $content = $response->getBody()->getContents();
+       //ubah ke array bro
+       $contentArray = json_decode($content, true);
+       //print_r($contentArray);
+       $data = $contentArray['data'];
+       return view('buku.index', ['data' => $data]);
     }
 
     /**

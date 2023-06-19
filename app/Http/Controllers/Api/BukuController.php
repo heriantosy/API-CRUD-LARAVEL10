@@ -7,6 +7,7 @@ use App\Models\Buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+//Halaman Backend API
 class BukuController extends Controller
 {  
     public function index()
