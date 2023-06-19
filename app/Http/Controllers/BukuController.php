@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 //Halaman Front End
 class BukuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
        $client = new Client();
@@ -81,7 +78,7 @@ class BukuController extends Controller
     {
         $client = new Client();
         $url ="http://localhost:8000/api/buku/$id";
-        $response = $client->request('POST', $url);
+        $response = $client->request('GET', $url);
         $content = $response->getBody()->getContents();
         $contentArray = json_decode($content, true);
        
