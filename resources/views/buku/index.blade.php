@@ -87,6 +87,7 @@
                         <a href="{{ url('buku/'. $item['id']) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ url('buku/'. $item['id']) }}" method="post" onsubmit="return confirm('Hapus')" class="d-inline">
                             @csrf
+                            @method('delete')
                             <button type="submit" name="submit" class="btn btn-danger btn-sm">Del </button>    
                             </form>
                         </td>
