@@ -9,3 +9,13 @@ php artisan make:controller Api\BukuController --api
 
 http://localhost:8000/api/buku (cTRL+S pada PostMan)
 http://localhost:8000/api/buku/2
+
+
+
+
+
+
+
+Bagian 2 Akses API
+----------------
+php artisan make:controller BukuController --resource
