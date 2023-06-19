@@ -71,7 +71,7 @@
                         <th class="col-md-1">No</th>
                         <th class="col-md-4">Judul</th>
                         <th class="col-md-3">Pengarang</th>
-                        <th class="col-md-2">Tanggal Publikasi</th>
+                        <th class="col-md-2">Penerbit</th>
                         <th class="col-md-2">Aksi</th>
                     </tr>
                 </thead>
