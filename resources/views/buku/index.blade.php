@@ -15,7 +15,8 @@
         <!-- START FORM -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <form action='' method='post'>
-                <div class="mb-3 row">
+                @csrf
+            <div class="mb-3 row">
                     <label for="judul" class="col-sm-2 col-form-label">Judul Buku</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name='judul' id="judul">
@@ -28,9 +29,9 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="tanggal_publikasi" class="col-sm-2 col-form-label">Tanggal Publikasi</label>
+                    <label for="tanggal_publikasi" class="col-sm-2 col-form-label">Pengarang</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control w-50" name='tanggal_publikasi' id="tanggal_publikasi">
+                        <input type="text" class="form-control w-50" name='penerbit' id="pengarang">
                     </div>
                 </div>
                 <div class="mb-3 row">
