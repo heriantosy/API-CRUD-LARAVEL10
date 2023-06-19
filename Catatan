@@ -19,3 +19,7 @@ http://localhost:8000/api/buku/2
 Bagian 2 Akses API
 ----------------
 php artisan make:controller BukuController --resource
+
+Ganti Port agar bisa akses ke back end karena php artisan serve hanya single running karena dipakai oleh api, jika sudah online tidak perlu
+--------------------------------------
+php artisan serve --port:8001
